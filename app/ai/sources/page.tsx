@@ -3,7 +3,7 @@ import FileUpload from "@/app/compenents/FileUpload";
 import SourceRight from "@/app/compenents/SourceRight";
 import { useState } from "react";
 
-const page = () => {
+const Sources = () => {
 
   const [files, setFiles] = useState<File[]>([]);
 
@@ -15,4 +15,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Sources

@@ -1,12 +1,11 @@
 'use client'
 import Image from "next/image";
-import Link from "next/link";
 import { chatData } from "@/app/data/chat-data";
 import { useState } from "react";
 
-const page = () => {
+const Chatlog = () => {
 
-  let [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   return (
     <>
       <div className='w-auto h-10 flex justify-end gap-2 m-4'>
@@ -46,22 +45,6 @@ const page = () => {
         </div>
 
         <div className="w-[60%]">
-          {/* {chatData.map(({message, type}, index) => (
-              <div key={index} 
-                className={`${type === 'inbound'
-                  ? 'flex justify-end w-[60%] ml-[40%] mr-2 h-[50px] mb-5' : 'flex justify-self-start w-[60%] h-[50px] gap-3 ml-2 mb-4'
-                }`}
-              >
-                <div key={index}
-                className={`${type === 'inbound' ? 'bg-blue-100 self-end text-right flex justify-end items-center p-4 h-full w-fit rounded-t-lg rounded-bl-lg'
-                  : 'bg-gray-200 self-start text-left h-full w-fit flex justify-start items-center p-4 rounded-t-lg rounded-br-lg'}`}
-                >
-                  <p>{message}</p>
-                </div> 
-              </div>
-              
-             ))} */}
-
           <div className="flex justify-self-start w-[60%] h-[50px] gap-3 ml-2 mb-4">
             <div className="bg-gray-100 self-end text-right flex justify-end items-center p-4 h-full w-fit rounded-t-lg rounded-br-lg shadow">
               <p>{chatData[selectedIndex].message}</p>
@@ -74,4 +57,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Chatlog

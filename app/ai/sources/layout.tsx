@@ -1,6 +1,5 @@
-import type { Metadata } from "next";
+
 import Leftbar from "@/app/compenents/Leftbar";
-import SourceRight from "@/app/compenents/SourceRight";
 import { SourceData } from "@/app/data/leftbar-data";
 
 export default function Layout({
@@ -29,7 +28,7 @@ export default function Layout({
 
 
       {children}
-      {/* <SourceRight content= 'Document'/> */}
+
     </div>
   );
 }

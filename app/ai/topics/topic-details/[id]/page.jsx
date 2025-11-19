@@ -5,8 +5,6 @@ import TopicsEditPage from '../../../../compenents/Topics/TopicsEditPage';
 export default async function TopicDetails({ params }) {
   const { id } = params;
 
-  // const [name, setName] = useState('')
-
   const filePath = path.join(process.cwd(), 'saved-json', 'saved-actions.json');
   const fileData = await fs.readFile(filePath, 'utf8');
   const topicData = JSON.parse(fileData);

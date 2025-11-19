@@ -1,4 +1,3 @@
-import { title } from "process"
 
 export const organizationData = [
     { title: 'Home', icon:'fa-regular fa-circle', path:"/settings/Home" },

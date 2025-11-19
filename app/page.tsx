@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { homeData } from "./data/home-data";
 
 export default function Home() {

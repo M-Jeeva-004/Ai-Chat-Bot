@@ -1,9 +1,5 @@
 'use client'
 import ShareLink from "@/app/compenents/ShareLink"
-import { get } from "http";
-import { Span } from "next/dist/trace";
-
-
 
 const Wordpress = () => {
   const iframeEmbed = `<script

@@ -5,7 +5,8 @@ const page = () => {
   return (
     <div className='relative w-auto h-fit'>
         <div className='h-[60px] bg-gray-100 pl-[30px] text-black flex items-center ai-head'>
-            <p className="flex items-center  text-1xl font-bold">AI Agent <Image 
+            <p className="flex items-center  text-1xl font-bold">AI Agent 
+              <Image 
                 src="/right-arrow.svg"
                 alt=""
                 width={30}
@@ -71,24 +72,28 @@ const page = () => {
               />
 
               <div className="flex gap-5 h-[20px]">
-              <Image 
+              {/* <Image 
                 src="/AI Home/Pen.png"
                 alt="pen-plus"
                 width={20}
                 height={10}
-              />
-              <Image 
+              /> */}
+              <i className="fa-solid fa-pen text-gray-700"></i>
+              <i className="fa-regular fa-message text-gray-700"></i>
+              <i className="fa-regular fa-copy text-gray-700"></i>
+
+              {/* <Image 
                 src="/AI Home/Messages.png"
                 alt="vector-plus"
                 width={15}
                 height={15}
-              />
-              <Image 
+              /> */}
+              {/* <Image 
                 src="/AI Home/Copy.png"
                 alt="copy-plus"
                 width={20}
                 height={20}
-              />
+              /> */}
 
               </div>
             </div>

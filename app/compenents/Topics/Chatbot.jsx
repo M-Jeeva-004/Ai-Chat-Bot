@@ -2,9 +2,8 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import TopicsBotreply from "./Botreply";
-import { fileURLToPath } from "url";
 
-const TopicsChatbot = ({ showForm, setShowForm }) => {
+const TopicsChatbot = ({ showForm }) => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [accessToken, setAccessToken] = useState('');
@@ -12,21 +11,20 @@ const TopicsChatbot = ({ showForm, setShowForm }) => {
   const [objects, setObjects] = useState([]);
   const [fields, setFields] = useState([]);
   const [selectedObject, setSelectedObject] = useState("");
-  // const objectName = "";
 
-  useEffect(() => {
-    // get token once on mount
-    const fetchToken = async () => {
-      try {
-        const res = await fetch("/api/salesforce-login/token", { method: "POST" });
-        const data = await res.json();
-        setAccessToken(data.access_token);
-      } catch (err) {
-        console.error("Error fetching token:", err);
-      }
-    };
-    fetchToken();
-  }, []);
+  // useEffect(() => {
+  //   // get token once on mount
+  //   const fetchToken = async () => {
+  //     try {
+  //       const res = await fetch("/api/salesforce-login/token", { method: "POST" });
+  //       const data = await res.json();
+  //       setAccessToken(data.access_token);
+  //     } catch (err) {
+  //       console.error("Error fetching token:", err);
+  //     }
+  //   };
+  //   fetchToken();
+  // }, []);
 
   // core handler for object fetching
   const handleObjectRecord = async (token, objectName = "") => {
@@ -49,8 +47,6 @@ const TopicsChatbot = ({ showForm, setShowForm }) => {
         };
         setMessages((prev) => [...prev, botMessage]);
       } else {
-        // show bot reply with selected object data
-        // const fields = Object.keys(data.records.objectAndFieldMap); // this is an object
 
         const fieldsForObject = (data.records.objectAndFieldMap);
         const fieldNames = Object.keys(data.records.objectAndFieldMap);
