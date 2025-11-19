@@ -86,24 +86,6 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* Drawer Panel */}
-      {/* <div
-        className={`fixed inset-y-0 left-0 transform ${
-          isDrawerOpen ? 'translate-x-0' : '-translate-x-full'
-        } w-80 bg-white shadow-lg transition-transform duration-300 ease-in-out z-50`}
-      >
-        <button
-          onClick={() => setIsDrawerOpen(false)}
-          className="absolute top-4 right-4 text-gray-600 text-xl"
-        >
-          ✕
-        </button>
-        <div className="p-6">
-          <h2 className="text-xl font-semibold mb-4">AI Agent Panel</h2>
-          <p>Insert drawer content here...</p>
-        </div>
-      </div> */}
-
       {/* Overlay */}
       {isDrawerOpen && (
         <div

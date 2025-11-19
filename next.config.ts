@@ -4,9 +4,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  devIndicators: {
-    buildActivity: false, // ❌ disables the bottom-right dev indicator
-  },
+  // devIndicators: {
+  //   buildActivity: false, // ❌ disables the bottom-right dev indicator
+  // },
 };
 
 export default nextConfig;
