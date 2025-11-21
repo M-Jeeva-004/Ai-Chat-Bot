@@ -103,70 +103,14 @@ const CustomTopic = ({ setStep, formData, setFormData, notification, setNotifica
     }));
   }
 
-  //   const handleError = () => {
-  //   let hasError = false;
-  //   const errors = {
-  //     name: '',
-  //     description: '',
-  //     scope: '',
-  //     instructions: Array(formData.instructions.length).fill('')
-  //   };
-
-  //   if (formData.name.trim() === '') {
-  //     errors.name = 'Name field is required';
-  //     hasError = true;
-  //   }
-
-  //   else if (formData.description.trim() === '') {
-  //     errors.description = 'Description field is required';
-  //     hasError = true;
-  //   }
-
-  //   else if (formData.scope.trim() === '') {
-  //     errors.scope = 'Scope field is required';
-  //     hasError = true;
-  //   } else {
-
-  //   formData.instructions.forEach((instruction, index) => {
-  //     if (instruction.trim() === '') {
-  //       errors.instructions[index] = 'Instruction is required';
-  //       hasError = true;
-  //     }
-  //   });
-  //   }
-
-  //   setError(errors);
-  //   setNotification({
-  //     message: 'Please fix the errors in the form',
-  //     visibility: true,
-  //     type: 'error',
-  //   });
-
-  //   if (hasError) {
-  //     setTimeout(() => {
-  //       setNotification({
-  //         message: '',
-  //         visibility: false,
-  //         type: '',
-  //       });
-  //       setError({
-  //         name: '',
-  //         description: '',
-  //         scope: '',
-  //         instructions: Array(formData.instructions.length).fill('')
-  //       });
-  //     }, 3000);
-  //   }
-
-  //   return !hasError;
-  // };
-
-  // const handleChange = (field, value) => {
-  //   setFormData(prev => ({
-  //     ...prev,
-  //     [field]: value
-  //   }));
-  // };
+  const handleRemoveInput = (i) => {
+    const updateInput = [...formData.inputs];
+    updateInput.splice(i, 1);
+    setFormData(prev => ({
+      ...prev,
+      inputs: updateInput
+    }));
+  }
 
   const handleInstructionChange = (index, value) => {
     const updatedInstructions = [...formData.instructions];
@@ -174,6 +118,15 @@ const CustomTopic = ({ setStep, formData, setFormData, notification, setNotifica
     setFormData(prev => ({
       ...prev,
       instructions: updatedInstructions
+    }));
+  };
+
+  const handleInputChange = (index, value) => {
+    const updatedInput = [...formData.inputs];
+    updatedInput[index] = value;
+    setFormData(prev => ({
+      ...prev,
+      inputs: updatedInput
     }));
   };
 
@@ -195,70 +148,6 @@ const CustomTopic = ({ setStep, formData, setFormData, notification, setNotifica
     setStep(3)
     setNotification({ visibility: false })
   }
-
-  // const handleSaveToServer = async (e) => {
-  //   e.preventDefault();
-  //   const hasError = handleError(); // Run validation
-
-  //   if (!hasError) {
-  //     setNotification({
-  //       message: 'Please fix the errors in the form',
-  //       visibility: true,
-  //       type: 'error',
-  //     });
-  //     setTimeout(() => {
-  //       setNotification(prev => ({...prev, visibility: false}))
-  //   }, 3000)
-  //     return;
-  //   }
-
-  //   const data = {
-  //     name: formData.name,
-  //     description: formData.description,
-  //     scope: formData.scope,
-  //     instructions: formData.instruction,
-  //   };
-
-  //   try {
-  //     const response = await fetch('/api/save-action', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(data),
-  //     });
-
-  //     const result = await response.json();
-
-  //     if (!response.ok) {
-  //       // Server-side error message (e.g., "Name already exists")
-  //       setNotification({
-  //         message: result.error || 'Failed to save data',
-  //         visibility: true,
-  //         type: 'error',
-  //       });
-  //     } else {
-  //       setNotification({
-  //         message: result.message || 'Data saved successfully!',
-  //         visibility: true,
-  //         type: 'success',
-  //       });
-  //     }
-  //   } catch (error) {
-  //     console.error('Error saving to server:', error);
-  //     setNotification({
-  //       message: 'Server error occurred',
-  //       visibility: true,
-  //       type: 'error',
-  //     });
-  //   }
-
-  //   // Hide notification after 3 seconds
-  //   setTimeout(() => {
-  //     setNotification((prev) => ({ ...prev, visibility: false }));
-  //   }, 3000);
-  // };
-
 
   return (
     <>
@@ -445,17 +334,17 @@ const CustomTopic = ({ setStep, formData, setFormData, notification, setNotifica
 
                   <div className="flex-items gap-3">
                     <textarea name=""
-                      id="instruction"
+                      id="inputs"
                       placeholder='Example User Input'
                       value={i}
-                      onChange={e => handleInstructionChange(index, e.target.value)}
+                      onChange={e => handleInputChange(index, e.target.value)}
                       className="topic-formInput py-2 field-sizing-content overflow-hidden min-h-[70px]"
                       required
                     ></textarea>
 
                     <button
                       type="submit"
-                      // onClick={() => handleRemoveInstructions(index)}
+                      onClick={() => handleRemoveInput(index)}
                       className="h-fit mt-2 hover:bg-red-300 p-1.5 rounded-2xl duration-300 ease-in-out"
                     >
                       <Image

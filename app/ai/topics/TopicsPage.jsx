@@ -31,11 +31,6 @@ function TopicsPage({ topicData }) {
     inputs: [''],
   });
 
-  //   useEffect(() => {
-  //   // Hide the notification whenever the step changes
-  //   setNotification(prev => ({ ...prev, visibility: false }));
-  // }, [step]);
-
   const handleChange = (field, value) => {
     setFormData(prev => ({
       ...prev,
@@ -246,7 +241,7 @@ function TopicsPage({ topicData }) {
                     {/* Close Button */}
                     <button
                       onClick={handleClose}
-                      className="absolute -top-11 right-0 text-gray-500 hover:text-black text-3xl bg-white px-2.5 rounded"
+                      className="absolute -top-13 right-0 text-gray-500 hover:text-black text-3xl bg-white px-2.5 pb-1.5 rounded"
                     >
                       &times;
                     </button>
