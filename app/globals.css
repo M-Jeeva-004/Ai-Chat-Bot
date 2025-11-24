@@ -5,6 +5,7 @@
 @import url('@fortawesome/fontawesome-svg-core/styles.css');
 @import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
 
+
 @import "tailwindcss";
 /* @tailwind base;
 @tailwind components; */
@@ -45,7 +46,7 @@
   }
 
   .dashboard-active {
-    @apply flex items-center gap-3 text-gray-800 p-2 rounded-md hover:bg-gray-200 transition active:bg-gray-400 focus:bg-gray-300
+    @apply flex items-center gap-3 text-gray-800 p-2 rounded-md hover:bg-gray-200 transition h-10
   }
 
   .gray-border {
@@ -759,5 +760,24 @@ animation: pulse 2s infinite;
 }
 
 
+/* TEXT SHINE ANIMATION */
+.shine-Text {
+  background: linear-gradient(to right, #666363 0, white 10%, #666363 20%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate 3s linear infinite;
+}
+
+@keyframes  animate {
+  0% {
+    background-position: 0;
+  }
+  50% {
+    background-position: 470px;
+  }
+  100% {
+    background-position: 470px;
+  }
+}
 
 

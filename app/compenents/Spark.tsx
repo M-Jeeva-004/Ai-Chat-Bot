@@ -25,8 +25,8 @@ const Spark = () => {
   };
 
   return (
-    <div className={`fixed top-[66px] w-full h-fit ${['/ai/topics', '/ai/settings/chat'].includes(pathName) ? 'z-0' : 'z-10'}`}>
-      <div className='h-[60px] bg-gray-100 pl-[30px] text-black flex items-center ai-head'>
+    <div className={`w-full h-fit ${['/ai/topics', '/ai/settings/chat'].includes(pathName) ? 'z-0' : 'z-1'}`}>
+      <div className='h-[60px] bg-gray-100 pl-[30px] text-black flex items-center shadow relative z-10'>
         <p className='flex items-center text-1xl font-bold'>
           <Link href='/ai'>
             <Image
@@ -42,7 +42,7 @@ const Spark = () => {
         </p>
       </div>
 
-      <div className='h-[60px] bg-gray-100 pl-[30px] text-black flex items-center ai-head md:gap-2 md:0'>
+      <div className='h-[50px] bg-gray-100 pl-[30px] text-black flex items-center ai-head md:gap-2 md:0'>
         {sparkData.map(({ label, href, disabled }) => {
           const isActive = pathName.startsWith(href);
 
@@ -50,7 +50,7 @@ const Spark = () => {
             <div key={label}>
               {disabled ? (
                 <p
-                  className={`flex items-center text-1xl lg:mx-3 mx-1 h-full lg:px-2 px:2 transition-all ${isActive
+                  className={`flex items-center text-[14px] lg:mx-3 mx-1 h-full lg:px-2 px:2 transition-all  font-bold ${isActive
                     ? 'border-b-2 border-green-500 text-green-500 font-semibold'
                     : 'text-gray-600 hover:text-green-500'
                     }`}
@@ -60,7 +60,7 @@ const Spark = () => {
               ) : (
                 <Link href={href}>
                   <p
-                    className={`flex items-center text-1xl lg:mx-3 mx-1 h-full lg:px-2 px:2 transition-all ${isActive
+                    className={`flex items-center text-[14px] lg:mx-3 mx-1 h-full lg:px-2 px:2 transition-all font-bold ${isActive
                       ? 'border-b-2 border-green-500 text-green-500 font-semibold'
                       : 'text-gray-600 hover:text-green-500'
                       }`}

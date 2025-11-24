@@ -1,9 +1,9 @@
 'use client'
 import { usePathname } from "next/navigation";
 import BodyLayout from "./compenents/BodyLayout";
-import Drawer from "./compenents/Drawer"
+import Drawer from "./compenents/Drawer";
 
-export default function HomeLayout({ children }) {
+export default function  HomeLayout({ children }) {
     const pathName = usePathname();
 
     // const homeLayout = pathName !== "/settings/Home";

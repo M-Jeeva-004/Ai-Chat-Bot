@@ -22,7 +22,7 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/compenents/FileUpload.jsx", "app/ai/sources/website/page.jsx", "app/ai/sources/text/page.jsx", "app/ai/sources/q&a/page.jsx", "app/compenents/Calender.jsx", "app/ai/settings/chat/page.jsx", "app/ai/custom-action/page.jsx", "app/ai/topics/page.jsx", "app/ai/topics/topic-details/[id]/layout.tsx", "app/ai/playground/page.jsx", "app/ai/topics/integrations/page.jsx", "app/data/selectStyle.js", "app/profile/page.jsx", "app/layout.jsx", "app/compenents/Header.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/compenents/FileUpload.jsx", "app/ai/sources/website/page.jsx", "app/ai/sources/text/page.jsx", "app/ai/sources/q&a/page.jsx", "app/compenents/Calender.jsx", "app/ai/settings/chat/page.jsx", "app/ai/custom-action/page.jsx", "app/ai/topics/page.jsx", "app/ai/topics/topic-details/[id]/layout.jsx", "app/ai/playground/page.jsx", "app/ai/topics/integrations/page.jsx", "app/data/selectStyle.js", "app/profile/page.jsx", "app/layout.jsx", "app/compenents/Header.jsx", "app/ai/sources/page.jsx", "app/compenents/SourceRight.jsx", "app/ai/sources/layout.jsx"],
   "exclude": ["node_modules"]
 }
 
