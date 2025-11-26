@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import TopicsEditPage from '../../../../compenents/Topics/TopicsEditPage';
+import TopicsEditPage from '../../../../../compenents/Topics/TopicsEditPage';
 
 export default async function TopicDetails({ params }) {
   const { id } = params;

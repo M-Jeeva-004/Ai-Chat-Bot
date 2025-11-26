@@ -1,10 +1,10 @@
 'use client'
 import React, { useState } from "react";
-import ClientTopics from "../../compenents/Topics/ClientTopics";
-import CustomTopic from "../../compenents/Topics/CustomTopic";
-import ActionsForm from "../../compenents/Topics/ActionsForm";
-import TopicsChatbot from "../../compenents/Topics/Chatbot";
-import TopicsEditPage from "../../compenents/Topics/TopicsEditPage";
+import ClientTopics from "../../../compenents/Topics/ClientTopics";
+import CustomTopic from "../../../compenents/Topics/CustomTopic";
+import ActionsForm from "../../../compenents/Topics/ActionsForm";
+import TopicsChatbot from "../../../compenents/Topics/Chatbot";
+import TopicsEditPage from "../../../compenents/Topics/TopicsEditPage";
 import { useRouter } from "next/navigation";
 
 // Separate client-side component

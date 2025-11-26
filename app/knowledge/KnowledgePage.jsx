@@ -9,64 +9,6 @@ import Select from 'react-select';
 import { customStyles } from '../data/selectStyle';
 import Link from "next/link";
 
-// const dataCategory = [
-//     {
-//         category: 'General', visibility: "all", folder: [
-//             {
-//                 folderName: 'General', visibility: "agents",
-//                 article: [
-//                     { title: 'title 1', context: 'Start writing your article here', delete: false },
-//                     { title: 'title 2', context: 'Start writing your article here', delete: false },
-//                     { title: 'title 3', context: 'Start writing your article here', delete: false },
-//                     { title: 'title 4', context: 'Start writing your article here', delete: false },
-//                 ],
-//             },
-//             {
-//                 folderName: 'Geene', visibility: "agents",
-//                 article: [
-//                     { title: 'title 1', context: 'Start writing your article here' },
-//                 ]
-//             }
-//         ],
-
-//         generalArticle: [
-//             { artTitle: 'Title 1', artContext: "" },
-//             { artTitle: 'Title 2', artContext: "" },
-//         ]
-//     },
-//     {
-//         category: 'FAQs', visibility: "all", folder: [
-//             {
-//                 folderName: 'Getting Started ', visibility: "agents",
-//                 article: [
-//                     { title: 'title 1', context: 'Start writing your article here', delete: false },
-//                     { title: 'title 2', context: 'Start writing your article here', delete: false },
-//                     { title: 'title 3', context: 'Start writing your article here', delete: false },
-//                     { title: 'title 4', context: 'Start writing your article here', delete: false },
-//                 ],
-//             },
-//         ],
-//         generalArticle: [
-//             { artTitle: 'Title 1', artContext: "" },
-//         ]
-//     },
-//     {
-//         category: 'General', visibility: "all", folder: [
-//             {
-//                 folderName: 'FAQs', visibility: "agents",
-//                 article: [
-//                     { title: 'title 1', context: 'Start writing your article here', delete: false },
-//                     { title: 'title 2', context: 'Start writing your article here', delete: false },
-//                     { title: 'title 3', context: 'Start writing your article here', delete: false },
-//                     { title: 'title 4', context: 'Start writing your article here', delete: false },
-//                 ],
-//             },
-//         ],
-//         generalArticle: [
-//             { artTitle: 'Title 1', artContext: "" },
-//         ]
-//     },
-// ]
 const visibleCategory = [
     { label: "All Users", value: "all" },
     { label: "Logged in Users", value: "loggedIn" },

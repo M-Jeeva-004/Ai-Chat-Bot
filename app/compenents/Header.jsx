@@ -7,6 +7,17 @@ import { useState, useRef, useEffect } from "react";
 const Header = ({ setOpenProfile }) => {
   const hideRef = useRef(null);
   const [openNotification, setOpenNotification] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
+  const pathName = usePathname();
+
+  const parts = pathName.split("/");
+  const agentId = parts[2];
+
+  let zClass = "z-[11]";
+
+  useEffect(() => {
+    setIsHydrated(true);   // Runs only on client
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -26,10 +37,8 @@ const Header = ({ setOpenProfile }) => {
     }
   }, [openNotification]);
 
-
-  const pathName = usePathname();
   return (
-    <header className={`px-5 py-3 justify-items font-sans shadow-sm fixed w-full ${pathName === ('/ai/topics') ? 'z-[0]' : 'z-[11]'}`}>
+    <header className={`px-5 py-3 justify-items font-sans shadow-sm fixed w-full ${pathName === (`/ai/${agentId}/topics`) ? 'z-[0]' : 'z-[11]'}`}>
 
       <Link
         href="/"

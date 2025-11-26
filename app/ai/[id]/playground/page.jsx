@@ -2,8 +2,13 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { MessageCirclePlus, MessageCircleX, Copy } from "lucide-react";
+import { aiAgents } from "@/app/data/playground";
+import * as React from "react";
 
-const Page = () => {
+const Page = ({params}) => {
+  const resolvedParams = React.use(params);   // ✅ unwrap
+  const id = resolvedParams.id;
+  console.log(id, "ID")
   const [messages, setMessages] = useState([]); // store multiple messages
   const [input, setInput] = useState(""); // store input text
   const [expand, setExpand] = useState(true);
@@ -12,6 +17,9 @@ const Page = () => {
   const [notificationSound, setNotificationSound] = useState(true);
   const textareaRef = useRef(null);
   const messagesEndRef = useRef(null);
+
+  const matchedAgents = aiAgents.find((agent) => agent.agentId === id); 
+  console.log(matchedAgents, "Matched Agents")
 
   useEffect(() => {
     scrollToBottom();
@@ -185,7 +193,7 @@ const Page = () => {
         <div className="justify-items w-full h-25 rounded px-5 shadow-53 flex items-center justify-between">
           <div className="flex-items">
             <Image src="/Header/Profile.png" alt="Profile icon" width={30} height={30} />
-            <h1 className="font-bold text-black">Agent Spark</h1>
+            <h1 className="font-bold text-black">{matchedAgents.name}</h1>
           </div>
           <div className="flex-items-2 gap-1">
             {/* <Image src="/reboot.png" alt="reboot icon" width={20} height={20} /> */}

@@ -47,3 +47,73 @@ export const customStyles = {
     textTransform: "none",
   }),
 };
+
+
+export const customStyles2 = {
+  control: (base, state) => ({
+    ...base,
+    minHeight: "30px",
+    height: "30px",
+    width: "220px",
+    fontSize: "13px",
+    fontWeight: 500,
+    borderRadius: "6px",
+    paddingLeft: "4px",
+    borderColor: state.isFocused ? "#22c55e" : "#9ca3af",
+    boxShadow: state.isFocused
+      ? "0 0 0 2px rgba(34,197,94,0.4)" // green glow
+      : "none",
+    "&:hover": {
+      borderColor: "#22c55e",
+    },
+  }),
+
+  valueContainer: (base) => ({
+    ...base,
+    height: "30px",
+    padding: "0 6px",
+    display: "flex",
+    alignItems: "center",
+  }),
+
+  indicatorsContainer: (base) => ({
+    ...base,
+    height: "30px",
+  }),
+
+  dropdownIndicator: (base) => ({
+    ...base,
+    padding: "4px",
+    color: "#22c55e",
+    "&:hover": {
+      color: "#16a34a",
+    },
+  }),
+
+  placeholder: (base) => ({
+    ...base,
+    color: "#9ca3af",
+    fontWeight: 500,
+  }),
+
+  option: (base, state) => ({
+    ...base,
+    fontSize: "13px",
+    padding: "6px 12px",
+    backgroundColor: state.isSelected
+      ? "#22c55e"            // green selected
+      : state.isFocused
+      ? "#bbf7d0"            // light green hover
+      : "white",
+    color: state.isSelected ? "white" : "black",
+  }),
+
+  groupHeading: (base) => ({
+    ...base,
+    fontSize: "11px",
+    padding: "2px 12px",
+    color: "#8a8a8a",
+  }),
+};
+
+

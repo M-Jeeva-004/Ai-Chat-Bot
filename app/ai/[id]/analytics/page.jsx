@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import DateRangeInput from '../../compenents/Calender';
-import { analyticsItems as staticItems, analyticsData } from '../../data/analyticsData';
+import DateRangeInput from '../../../compenents/Calender';
+import { analyticsItems as staticItems, analyticsData } from '../../../data/analyticsData';
 import Image from 'next/image';
 import { parse, format } from 'date-fns';
 import { PieChart, Pie, Cell } from 'recharts';

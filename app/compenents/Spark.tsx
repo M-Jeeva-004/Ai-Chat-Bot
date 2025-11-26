@@ -8,24 +8,27 @@ import { sparkData } from '../data/spark-head';
 const Spark = () => {
   const pathName = usePathname();
 
+  const parts = pathName.split("/");
+  const agentId = parts[2];
+
   // ✅ Full match to remove layout on specific route |
-  if (pathName.startsWith('/ai/custom-action')) {
+  if (pathName.startsWith(`/ai/${agentId}/custom-action`)) {
     return (
 
-      <TopicsHead href='/ai/topics' label='Custom Actions' />
+      <TopicsHead href={`/ai/${agentId}/topics`} label='Custom Actions' />
 
     ); // Completely skip layout
-  } else if (pathName.startsWith('/ai/topics/topic-details')) {
+  } else if (pathName.startsWith(`/ai/${agentId}/topics/topic-details`)) {
     return (
       <div className='fixed top-[65px] w-full h-fit z-10'>
-        <TopicsHead href='/ai/topics' label='Topic Details' />
+        <TopicsHead href={`/ai/${agentId}/topics`} label='Topic Details' />
       </div>
 
     )
   };
 
   return (
-    <div className={`w-full h-fit ${['/ai/topics', '/ai/settings/chat'].includes(pathName) ? 'z-0' : 'z-1'}`}>
+    <div className={`w-full h-fit ${[`/ai/${agentId}/topics`, `/ai/${agentId}/settings/chat`].includes(pathName) ? 'z-0' : 'z-1'}`}>
       <div className='h-[60px] bg-gray-100 pl-[30px] text-black flex items-center shadow relative z-10'>
         <p className='flex items-center text-1xl font-bold'>
           <Link href='/ai'>
@@ -44,7 +47,7 @@ const Spark = () => {
 
       <div className='h-[50px] bg-gray-100 pl-[30px] text-black flex items-center ai-head md:gap-2 md:0'>
         {sparkData.map(({ label, href, disabled }) => {
-          const isActive = pathName.startsWith(href);
+          const isActive = pathName.startsWith(`/ai/${agentId}/${href}`);
 
           return (
             <div key={label}>
@@ -58,7 +61,7 @@ const Spark = () => {
                   {label}
                 </p>
               ) : (
-                <Link href={href}>
+                <Link href={`/ai/${agentId}/${href}`}>
                   <p
                     className={`flex items-center text-[14px] lg:mx-3 mx-1 h-full lg:px-2 px:2 transition-all font-bold ${isActive
                       ? 'border-b-2 border-green-500 text-green-500 font-semibold'

@@ -1,6 +1,9 @@
 'use client';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
+import Select from "react-select";
+import { filesData } from "../data/source";
+import { customStyles2 } from "../data/selectStyle";
 
 const MAX_SIZE_MB = 20;
 const ALLOWED_TYPES = [
@@ -10,7 +13,10 @@ const ALLOWED_TYPES = [
   'text/plain', // .txt
 ];
 
-const FileUpload = ({ files, setFiles }) => {
+const FileUpload = ({ files, setFiles, uploadedFiles }) => {
+  const [searchFiles, setSearchFiles] = useState("");
+  const [filesByUpdation, setFilesByUpdation] = useState("modified_new");
+
   const validateFiles = (fileList) => {
     const validFiles = [];
 
@@ -42,9 +48,12 @@ const FileUpload = ({ files, setFiles }) => {
     setFiles((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const filterFiles = uploadedFiles.filter((file) => file.toLowerCase().includes(searchFiles.toLowerCase()));
+  console.log(uploadedFiles, "Uploaded files")
+
   return (
     <div className='w-full overflow-auto pt-5 pl-5 pb-1 scrollbar-hide rounded'>
-      <div className="flex flex-col w-[95%] h-fit shadow-11 rounded">
+      <div className="flex flex-col gap-3 w-[95%] h-fit shadow-11 rounded">
         <h1 className="text-black text-2xl p-4 font-bold rounded-t border-b border-gray-200">
           Files
         </h1>
@@ -106,6 +115,63 @@ const FileUpload = ({ files, setFiles }) => {
             )}
           </div>
         </div>
+
+        
+      </div>
+
+      <div className='flex flex-col gap-3 w-[95%] h-fit shadow-11 rounded bg-white mt-4 p-5'>
+
+        <div className='justify-items'>
+          <h2 className='text-black'>File Sources</h2>
+          <div className="group flex items-center px-4 py-0 rounded-md border-2 border-gray-400 overflow-hidden max-w-md mr-5 h-[35px] hover:border-green-500 focus-within:border-green-500">
+            <input type="text" 
+              placeholder="Search"
+              value={searchFiles}
+              onChange={(e)=> setSearchFiles(e.target.value)}
+              className="w-full outline-none bg-transparent text-gray-600 text-sm h-[35px]" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904" width="16px" className="fill-gray-400 group-hover:fill-green-500">
+              <path
+                d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z">
+              </path>
+            </svg>
+          </div>
+        </div>
+        
+        {uploadedFiles.length === 0 ? 
+          <div className='text-black'>
+              No  Data
+          </div>
+         : <div>
+          <div className='justify-items'>
+            <div className='flex'>
+              <input type="checkbox" />
+              <p>Select All</p>
+            </div>
+            
+            <div>
+              <Select 
+                  instanceId="chat-manager"
+                  options={filesData}
+                  value={filesData.find(option => option.value === filesByUpdation)}
+                  onChange={(e)=> setFilesByUpdation(e.value)}
+                  styles={customStyles2}
+                  className="text-sm w-full"
+                  menuPlacement='top'
+                  components={{
+                  IndicatorSeparator: () => null
+                  }}
+              />
+            </div>
+          </div>
+          {uploadedFiles.map((files, index) => (
+            <div key={index} className=''>
+
+              <div>{files}</div>
+            </div> 
+          ))}
+         </div>
+        }
+        
       </div>
     </div>
   );

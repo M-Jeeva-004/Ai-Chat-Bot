@@ -4,14 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-interface Props{
-    label: string,
-    icon: string,
-    greenIcon: string,
-    href: string,
-}
-
-const Leftbar: React.FC<Props> = ({label, icon, greenIcon, href}) => {
+const Leftbar = ({label, icon, greenIcon, href}) => {
 
     const pathname = usePathname();
     const isActive = pathname === href;
