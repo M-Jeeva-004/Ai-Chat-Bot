@@ -2,13 +2,18 @@
 import SourceRight from '@/app/compenents/SourceRight';
 import { useState } from 'react';
 import Image from 'next/image';
+import { useSources } from "@/app/context/SourcesContext";
 
 const Text = () => {
 
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
-  const [snippets, setSnippets] = useState([]);
+  // const [snippets, setSnippets] = useState([]);
   const [menuIndex, setMenuIndex] = useState(null);
+  const {
+    snippets,
+    setSnippets,
+  } = useSources();
 
   const [editIndex, setEditIndex] = useState(null);
   const [editTitle, setEditTitle] = useState('');
@@ -141,21 +146,20 @@ const Text = () => {
   return (
     <>
       <div className='w-[80%] gap-[20px] flex pl-5 max-lg:flex-col'>
-        <div className='flex w-full flex-col overflow-y-scroll scrollbar-hide pl-2 pt-5'>
+        <div className='flex w-full flex-col overflow-y-scroll scrollbar-hide pl-2 py-5'>
           <div className='flex flex-col w-[95%] h-fit shadow-5 rounded-[5px]'>
 
-            <h1 className='text-black text-2xl p-4 font-bold shadow-19'>
-              Text
-            </h1>
+            <div className='py-6 px-6'>
+              <h1 className="text-black font-bold rounded-t pb-1">Text</h1>
+              <p className='text-gray-500 text-sm'>Add and process plain text-based sources to train your AI Agent with precise information.</p>
+            </div>
 
             <form
               onSubmit={handleAddSnippet}
-              className="h-auto flex justify-start py-10 items-start text-black flex-col px-10 gap-2">
-              <p className='text-[15px] text-gray-600'>Add and process plain text- based sources to train your AI Agent with precise information.</p>
-
+              className="h-auto flex justify-start items-start text-black flex-col px-6 pb-6 gap-2">
               <label htmlFor="title" className='font-bold' >Title <span className='text-red-500'>*</span></label>
               <input id='title' type="text" placeholder='Enter Title' value={title} required onChange={(e) => setTitle(e.target.value)}
-                className='w-full h-[50] p-2 rounded border border-gray-300 outline-none'
+                className='w-full h-[50] p-2 rounded border border-gray-300 outline-none form-input'
               />
               {error.title && (
                 <p className='text-red-500 text-sm mt-1'>{error.title}</p>
@@ -164,7 +168,7 @@ const Text = () => {
 
               <label htmlFor="description" className='font-bold'>Description <span className='text-red-500'>*</span></label>
               <textarea name="" id="description" rows={5} maxLength={2097000} placeholder='Enter Description' required value={desc} onChange={(e) => setDesc(e.target.value)}
-                className='border border-gray-300 w-full p-2 rounded outline-none resize-none'></textarea>
+                className='border border-gray-300 p-2 resize-none w-full rounded mt-2 px-4 text-[14px] font-semibold focus:border-green-500 outline-none focus:outline-none focus:ring-1 focus:ring-green-500 hover:border-green-500'></textarea>
               {error.desc && (
                 <p className='text-red-500 text-sm mt-1'>{error.desc}</p>
               )}
@@ -294,9 +298,9 @@ const Text = () => {
 
           )}
         </div>
-        <div className='pt-5'>
+        {/* <div className='pt-5'>
           <SourceRight content='Text' files={snippets} />
-        </div>
+        </div> */}
 
       </div>
 

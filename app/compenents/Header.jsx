@@ -38,8 +38,7 @@ const Header = ({ setOpenProfile }) => {
   }, [openNotification]);
 
   return (
-    <header className={`px-5 py-3 justify-items font-sans shadow-sm fixed w-full ${pathName === (`/ai/${agentId}/topics`) ? 'z-[0]' : 'z-[11]'}`}>
-
+    <header className={`px-5 py-3 justify-items font-sans shadow-sm fixed w-full z-[11]`}>
       <Link
         href="/"
         className="cursor-pointer">

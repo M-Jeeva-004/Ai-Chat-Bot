@@ -3,12 +3,22 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import SourceRight from '@/app/compenents/SourceRight';
+import { useSources } from "@/app/context/SourcesContext";
+import { FolderOpen } from "lucide-react";
 
 const Website = () => {
   const [inputUrl, setInputUrl] = useState('');
-  const [links, setLinks] = useState([]);
+  // const [links, setLinks] = useState([]);
   const [menuIndex, setMenuIndex] = useState(null);
   const [error, setError] = useState('');
+
+  const {
+    links,
+    setLinks,
+    notification,
+    uploadedFiles,
+  } = useSources(); 
+
 
   const handleAddLink = () => {
     if (inputUrl.trim() !== '');
@@ -39,14 +49,17 @@ const Website = () => {
 
   return (
     <>
-      <div className='w-[80%] gap-[20px] flex max-lg:flex-col pb-1'>
-        <div className='w-full overflow-auto pt-5 pl-5 pb-1 scrollbar-hide'>
-          <div className='flex flex-col w-[95%] h-fit shadow-5 rounded-[5px]'>
-            <h1 className='text-black text-2xl p-4 font-bold shadow-19'>Website</h1>
+      <div className='w-[80%] flex max-lg:flex-col pb-1'>
+        <div className='w-full overflow-auto p-5 scrollbar-hide'>
+          <div className='flex flex-col w-full h-fit shadow-11 rounded-[5px]'>
+            <div className='py-6 px-6'>
+              <h1 className="text-black font-bold rounded-t pb-1">Website</h1>
+              <p className='text-gray-500 text-sm'>Crawl specific web pages or submit sitemaps to continuously update your AI with the latest content. Configure included and excluded paths to refine what your AI learns.</p>
+            </div>
 
-            <div className='h-auto flex pt-10 px-[30px] flex-col text-black'>
+            <div className='h-auto flex px-6 flex-col text-black'>
               <div className='h-full'>
-                <p className='font-bold py-3'>Crawl</p>
+                <p className='font-bold py-3'>Crawl Links</p>
                 <div className='w-full flex gap-4 pb-5 justify-between'>
                   <div className='flex flex-col gap-2 w-[90%]'>
                     <input
@@ -56,14 +69,8 @@ const Website = () => {
                       type="text"
                       placeholder='https://www.example.com'
                     />
-                    <p className='w-full flex gap-2 bg-blue-100 text-[15px] p-2 text-blue-400 border rounded'>
-                      <Image
-                        className='h-5 w-5'
-                        src="/SourceIcons/Info.png"
-                        alt='Info icon'
-                        width={10}
-                        height={10}
-                      />
+                    <p className='w-full flex items-center gap-2 bg-green-100 text-sm p-2 text-green-400 border rounded'>
+                      <i className="fa-solid fa-circle-info"></i>
                       This will crawl all the links starting with the URL (not including files on the website).
                     </p>
                     {error && <p className='text-red-500 text-sm mt-1'>{error}</p>}
@@ -72,14 +79,18 @@ const Website = () => {
                   <button
                     onClick={handleAddLink}
                     disabled={inputUrl.trim() === ''}
-                    className={`h-max p-[5px] border border-gray-300 shadow text-gray-500 w-[150px] rounded ${inputUrl.trim() === '' ? 'bg-gray-200 cursor-not-allowed!' : 'bg-green-500 text-white'}`}
+                    className={`h-max p-[5px] border border-gray-300 shadow text-gray-500 min-w-[150px] rounded ${inputUrl.trim() === '' ? 'bg-gray-200 cursor-not-allowed!' : 'bg-green-500 text-white'}`}
                   >
                     Fetch More Links
                   </button>
                 </div>
               </div>
 
-              <div className='py-5'>
+              
+            </div>
+          </div>
+
+          <div className='py-5 shadow-11 p-5 text-black rounded mt-3'>
                 <div className='flex justify-between items-center'>
                   <h1 className='font-bold text-[20px]'>Included Links</h1>
                   <button
@@ -98,6 +109,7 @@ const Website = () => {
                       width={70}
                       height={40}
                     />
+                    {/* <FolderOpen size={70} color='#d1d5dc' /> */}
                     <p className=''>No Data Available</p>
                   </div>
                 ) : (
@@ -146,11 +158,9 @@ const Website = () => {
                   </ul>
                 )}
               </div>
-            </div>
-          </div>
         </div>
         <div className='pt-5'>
-          <SourceRight content='Link' files={links} />
+          {/* <SourceRight content='Link' files={links} /> */}
         </div>
 
       </div>

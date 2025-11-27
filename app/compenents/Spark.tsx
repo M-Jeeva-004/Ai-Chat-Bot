@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { sparkData } from '../data/spark-head';
+import { aiAgents } from '../data/playground';
 
 const Spark = () => {
   const pathName = usePathname();
@@ -27,6 +28,9 @@ const Spark = () => {
     )
   };
 
+  const matchedAgent = aiAgents.find((agent) => agent.agentId ===  agentId);
+  console.log(matchedAgent, "Matched Agents")
+
   return (
     <div className={`w-full h-fit ${[`/ai/${agentId}/topics`, `/ai/${agentId}/settings/chat`].includes(pathName) ? 'z-0' : 'z-1'}`}>
       <div className='h-[60px] bg-gray-100 pl-[30px] text-black flex items-center shadow relative z-10'>
@@ -40,7 +44,7 @@ const Spark = () => {
               className='mr-5 w-[20px]'
             />
           </Link>
-          Agent Spark
+          <span>{matchedAgent?.name || 'Unknown'}</span>
           <Image src='/right-arrow.svg' alt='' width={30} height={20} className='w-[30px]' />
         </p>
       </div>

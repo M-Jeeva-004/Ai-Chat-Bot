@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import ActionHead from "../ActionHead";
+import ActionHead from "./ActionHead";
 import TopicsLayoutHeader from "./TopicsLayoutHeader";
 
 
@@ -361,7 +361,7 @@ const TopicsEditPage = ({ topic, showForm, setShowForm, setShowTopics }) => {
       )}
 
       {step === 2 && (
-        <ActionHead step={step} setStep={setStep} />
+        <ActionHead step={step} setStep={setStep} showForm={showForm} />
       )}
 
       {notification.visibility && (

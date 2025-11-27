@@ -86,29 +86,6 @@ const ClientTopics = ({ topicData: initialData, showForm, setShowForm, setTopicI
 
     })
 
-    // useEffect(() => {
-    //     if (searchInput.trim() === '') {
-    //         const sorted = [...topicData].sort((a,b) => {
-    //         const dateA = a.name.toLowerCase();
-    //         const dateB = b.name.toLowerCase();
-    //         if(sortOrder === 'asc'){
-    //             return dateA.localeCompare(dateB);
-    //         }else{
-    //             return dateB.localeCompare(dateA);
-    //         }
-    //     });
-    //     setFilteredData(sorted);
-    //     // setFilteredData(topicData);
-    //     } else {
-    //     const filtered = topicData.filter((item) =>
-    //         item.name.toLowerCase().includes(searchInput.toLowerCase())
-    //     );
-    //     setFilteredData(filtered);
-    //     }
-    // }, [searchInput, topicData]);
-
-
-
     const handleReset = () => {
         setSearchInput('');
         setTextWrapper(true);

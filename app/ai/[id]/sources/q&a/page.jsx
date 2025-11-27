@@ -3,15 +3,19 @@ import React from 'react';
 import SourceRight from '@/app/compenents/SourceRight';
 import { useState } from 'react';
 import Image from 'next/image';
-
+import { useSources } from "@/app/context/SourcesContext";
 
 const QA = () => {
 
   const [title, setTitle] = useState('');
   // const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
-  const [snippets, setSnippets] = useState([]);
+  // const [qaSnippets, setQaSnippets] = useState([]);
   const [menuIndex, setMenuIndex] = useState(null);
+  const {
+    qaSnippets,
+    setQaSnippets,
+  } = useSources();
 
   const [questions, setQuestions] = useState(['']);
 
@@ -36,7 +40,7 @@ const QA = () => {
 
     if(title.trim() === '' || questions.some(q => q.trim() === '') || answer.trim() === '') return;
 
-    setSnippets((prev) => [...prev, {title: title.trim(), question: [...questions], answer: answer.trim()}]);
+    setQaSnippets((prev) => [...prev, {title: title.trim(), question: [...questions], answer: answer.trim()}]);
 
     setTitle('');
     setQuestions(['']);
@@ -113,7 +117,7 @@ const QA = () => {
   }
 
   const handleDelete = (indextoDelete) => {
-    setSnippets(snippets.filter((_, index) => index !== indextoDelete));
+    setQaSnippets(qaSnippets.filter((_, index) => index !== indextoDelete));
     setMenuIndex(null);
 
   }
@@ -121,11 +125,11 @@ const QA = () => {
   const handleEdit = (index) => {
     setEditIndex(editIndex === index ? null : index);
     setEditIndex(index);
-    setEditTitle(snippets[index].title);
-    console.log(snippets[index].title)
-    setEditQuestion([...snippets[index].question]);
-    console.log(snippets[index].question[1])
-    setEditAnswer(snippets[index].answer);
+    setEditTitle(qaSnippets[index].title);
+    console.log(qaSnippets[index].title)
+    setEditQuestion([...qaSnippets[index].question]);
+    console.log(qaSnippets[index].question[1])
+    setEditAnswer(qaSnippets[index].answer);
     setMenuIndex(null);
   }
 
@@ -169,9 +173,9 @@ const QA = () => {
       questions: []
     })
 
-    const updated = [...snippets];
+    const updated = [...qaSnippets];
     updated[index] = {title: editTitle, question: [...editQuestion], answer: editAnswer};
-    setSnippets(updated);
+    setQaSnippets(updated);
     setEditIndex(null);
   }
 
@@ -189,7 +193,7 @@ const QA = () => {
 
   return (
     <>
-      <div className='w-[80%] gap-[20px] flex mt-[30px] ml-[30px] max-lg:flex-col'>
+      <div className='w-[80%] gap-[20px] flex mt-[15px] ml-[30px] max-lg:flex-col'>
         <div className='overflow-y-scroll scrollbar-hide pb-[200px] pl-2 pt-1'>
           <div className='flex flex-col w-[95%] h-fit shadow-5 rounded-[5px]'>
           
@@ -289,7 +293,7 @@ const QA = () => {
             <p className='font-bold text-[20px]'>
               Q&A Sources
             </p>
-            {snippets.length === 0 ? (
+            {qaSnippets.length === 0 ? (
               <div className='flex-items w-full flex-col my-5'>
                 <Image
                   src="/folder.png"
@@ -301,7 +305,7 @@ const QA = () => {
               </div>
             ) : (
               <div className='flex flex-col gap-2'>
-                {snippets.map((item, index) => (
+                {qaSnippets.map((item, index) => (
                   <div key={index}
                   className='border border-gray-300 p-4 rounded'
                   >
@@ -442,7 +446,7 @@ const QA = () => {
         </div>
 
 
-        <SourceRight content='Q&A' files={snippets} />
+        {/* <SourceRight content='Q&A' files={qaSnippets} /> */}
       </div>
     </>
     

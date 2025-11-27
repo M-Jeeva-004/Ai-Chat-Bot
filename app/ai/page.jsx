@@ -1,9 +1,9 @@
 'use client'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { aiAgents } from "../data/playground";
-import { Plus, UserRoundCheck, ScanSearch, Bot } from "lucide-react";
+import { Plus, UserRoundCheck, ScanSearch, Bot, Pencil, MessageSquareMore, Copy } from "lucide-react";
 
 // const aiAgents = [
 //   { agenIid: "spark001", name: "Agent Spark" },
@@ -22,7 +22,7 @@ const page = () => {
 
   const handleCreateAgent = () => {
     const newAgent = {
-      // agentId: crypto.randomUUID(),
+      agentId: crypto.randomUUID(),
       name: agentName,
     };
 
@@ -149,18 +149,63 @@ const page = () => {
                 </Link>
                 
 
-                <div className="flex justify-between w-full">
-                  <Image 
-                    src="/ai-icon.png"
-                    alt="ai-plus"
-                    width={15}
-                    height={20}
-                  />
+                <div className="flex items-center h-8 justify-between w-full pl-3">
+                  <div className="relative group">
+                    <Image 
+                      src="/ai-icon.png"
+                      alt="ai-plus"
+                      width={15}
+                      height={20}
+                    />
+                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2
+                                    whitespace-nowrap px-3 py-2 text-sm font-medium text-white
+                                    bg-gray-800 rounded-md shadow-md opacity-0 invisible
+                                    group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                      Ai Bot
+                      <div className="absolute top-8 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></div>
+                    </div>
+                  </div>
 
-                  <div className="flex gap-5 h-[20px]">
-                    <i className="fa-solid fa-pen text-gray-700"></i>
-                    <i className="fa-regular fa-message text-gray-700"></i>
-                    <i className="fa-regular fa-copy text-gray-700"></i>
+                  <div className="flex gap-3">
+                    <Link href={`/ai/${agentId}/settings`}>
+                      <div className="relative group hover:bg-gray-100 hover:text-gray-500 text-black px-1 py-3 h-8 w-8 flex items-center justify-center rounded-full transition duration-300 cursor-pointer">
+                        <Pencil size={18} />
+
+                        <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2
+                                        whitespace-nowrap px-3 py-2 text-sm font-medium text-white
+                                        bg-gray-800 rounded-md shadow-md opacity-0 invisible
+                                        group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                          Edit
+                          <div className="absolute top-8 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></div>
+                        </div>
+                      </div>
+                    </Link>
+
+                    <Link href={`/ai/${agentId}/chatlog`}>
+                      <div className="relative group hover:bg-gray-100 hover:text-gray-500 text-black px-1 py-3 h-8 w-8 flex items-center justify-center rounded-full transition duration-300 cursor-pointer">
+                        <MessageSquareMore size={18} />
+
+                        <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2
+                                        whitespace-nowrap px-3 py-2 text-sm font-medium text-white
+                                        bg-gray-800 rounded-md shadow-md opacity-0 invisible
+                                        group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                          Responses
+                          <div className="absolute top-8 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></div>
+                        </div>
+                      </div>
+                    </Link>
+
+                    <div className="relative group hover:bg-gray-100 hover:text-gray-500 text-black px-1 py-3 h-8 w-8 flex items-center justify-center rounded-full transition duration-300 cursor-pointer">
+                      <Copy size={18} />
+
+                      <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2
+                                      whitespace-nowrap px-3 py-2 text-sm font-medium text-white
+                                      bg-gray-800 rounded-md shadow-md opacity-0 invisible
+                                      group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                        Clone
+                        <div className="absolute top-8 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
