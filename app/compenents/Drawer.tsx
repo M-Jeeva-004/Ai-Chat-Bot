@@ -3,7 +3,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronsLeft, ChevronsRight } from 'lucide-react';
+import { ChevronsLeft, ChevronsRight, LayoutDashboard, BookOpen, MessageSquare, BriefcaseBusiness } from 'lucide-react';
 
 export default function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -21,16 +21,10 @@ export default function Sidebar() {
             <div className="relative group">
               <Link
                 href="/dashboard"
-                className={`dashboard-active ${isCollapsed ? 'justify-center ' : 'justify-start'} ${pathName.startsWith("/dashboard") && "bg-green-400"}`}
+                className={`dashboard-active ${isCollapsed ? 'justify-center ' : 'justify-start'} ${pathName.startsWith("/dashboard") && "bg-gray-300"}`}
               >
 
-                <Image
-                  src="/dashboard.png"
-                  alt="dashboard icon"
-                  width={50}
-                  height={50}
-                  className='h-5 w-5'
-                />
+                <LayoutDashboard />
                 <span className={`${isCollapsed ? "opacity-0 absolute" : "block delay-200"} transition-all ease-in`}>Dashboard</span>
               </Link>
               {/* Tooltip */}
@@ -47,15 +41,10 @@ export default function Sidebar() {
             <div className="relative group">
               <Link
                 href="/knowledge"
-                className={`dashboard-active ${isCollapsed ? 'justify-center ' : 'justify-start'} ${pathName.startsWith("/knowledge") && "bg-green-400"}`}
+                className={`dashboard-active ${isCollapsed ? 'justify-center ' : 'justify-start'} ${pathName.startsWith("/knowledge") && "bg-gray-300 text-white"}`}
               >
 
-                <Image
-                  src="/book-icon.png"
-                  alt="knowledge icon"
-                  width={20} height={20}
-                  className='w-[20px]'
-                />
+                <BookOpen />
                 <span className={`${isCollapsed ? "opacity-0 absolute" : "block delay-200"} transition-all`}>Knowledge Base</span>
                 
               </Link>
@@ -73,13 +62,9 @@ export default function Sidebar() {
             <div className="relative group">
               <Link
                 href="/chat"
-                className={`dashboard-active ${isCollapsed ? 'justify-center ' : 'justify-start'} ${pathName.startsWith("/chat") && "bg-green-400"}`}
+                className={`dashboard-active ${isCollapsed ? 'justify-center ' : 'justify-start'} ${pathName.startsWith("/chat") && "bg-gray-300"}`}
               >
-                <Image
-                  src="/Vector.png"
-                  alt="vector icon"
-                  width={20} height={20}
-                />
+                <MessageSquare />
                 <span className={`${isCollapsed ? "opacity-0 absolute" : "block delay-200"} transition-all`}>Live Chat</span>
               </Link>
               {/* Tooltip */}
@@ -96,7 +81,7 @@ export default function Sidebar() {
             <div className="relative group">
               <Link
                 href='/ai'
-                className={`dashboard-active ${isCollapsed ? 'justify-center ' : 'justify-start'} ${pathName.startsWith("/ai") && "bg-green-400"}`}
+                className={`dashboard-active ${isCollapsed ? 'justify-center ' : 'justify-start'} ${pathName.startsWith("/ai") && "bg-gray-300"}`}
               >
                 <Image
                   src="/ai-icon.png"
@@ -113,6 +98,26 @@ export default function Sidebar() {
                     className={`tooltip relative z-50 ${isCollapsed ? "block" : "hidden"}`}
                 >
                     Ai Agent
+                    <div className="tooltip-point"></div>
+                </div>
+            </div>
+
+            <div className="relative group">
+              <Link
+                href='/workspace'
+                className={`dashboard-active ${isCollapsed ? 'justify-center ' : 'justify-start'} ${pathName.startsWith("/workspace") && "bg-gray-300"}`}
+              >
+                <BriefcaseBusiness />
+                <span className={`${isCollapsed ? "opacity-0 absolute" : "block delay-200"} transition-all`}>Workspace</span>
+              </Link>
+
+              {/* Tooltip */}
+                <div
+                    id="tooltip-dashboard"
+                    role="tooltip"
+                    className={`tooltip relative z-50 ${isCollapsed ? "block" : "hidden"}`}
+                >
+                    Workspace
                     <div className="tooltip-point"></div>
                 </div>
             </div>

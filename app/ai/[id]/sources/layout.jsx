@@ -1,7 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Leftbar from "@/app/compenents/Leftbar";
-import SourceRight from "@/app/compenents/SourceRight2";
+import SourceRight from "@/app/compenents/SourceRight";
 import { SourceData } from "@/app/data/leftbar-data";
 import { SourcesProvider } from "@/app/context/SourcesContext";
 

@@ -26,8 +26,10 @@
     "react-color": "^2.19.3",
     "react-datepicker": "^8.4.0",
     "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
     "react-select": "^5.10.2",
     "recharts": "^3.1.0",
+    "remark-gfm": "^4.0.1",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {

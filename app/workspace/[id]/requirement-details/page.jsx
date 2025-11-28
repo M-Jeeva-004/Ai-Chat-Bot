@@ -1,15 +1,17 @@
-'use client'
+"use client"
+import React from 'react'
+import { useRequirement } from '../../../context/WorkspaceContext';
 import FileUpload from "@/app/compenents/FileUpload";
-import { useSources } from "@/app/context/SourcesContext";
 
-const Sources = () => {
+
+const RequirementDetails = () => {
 
   const {
     files,
     setFiles,
     notification,
     uploadedFiles,
-  } = useSources();
+  } = useRequirement();
 
   return (
     <div className='w-[80%] gap-[20px] flex ml-[30px] pb-4 max-lg:flex-col'>
@@ -27,4 +29,4 @@ const Sources = () => {
   )
 }
 
-export default Sources
+export default RequirementDetails

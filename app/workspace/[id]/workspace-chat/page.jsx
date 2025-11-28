@@ -2,13 +2,16 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { MessageCirclePlus, MessageCircleX, Copy } from "lucide-react";
-import { aiAgents } from "@/app/data/playground";
+import { workspaceData } from "../../../data/workspace";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import * as React from "react";
+// import Markdown from "react-markdown";
 
 const Page = ({params}) => {
   const resolvedParams = React.use(params);   // ✅ unwrap
   const id = resolvedParams.id;
-  console.log(id, "ID")
+
   const [messages, setMessages] = useState([]); // store multiple messages
   const [input, setInput] = useState(""); // store input text
   const [expand, setExpand] = useState(true);
@@ -18,8 +21,8 @@ const Page = ({params}) => {
   const textareaRef = useRef(null);
   const messagesEndRef = useRef(null);
 
-  const matchedAgents = aiAgents.find((agent) => agent.agentId === id); 
-  console.log(matchedAgents, "Matched Agents")
+  const matchedWorkAgent = workspaceData.find((work) => work.id === id); 
+  console.log(matchedWorkAgent, "Matched Agents")
 
   useEffect(() => {
     scrollToBottom();
@@ -70,7 +73,7 @@ const Page = ({params}) => {
 
     try {
       // 🔹 Fetch Salesforce token (ideally only once, not per message)
-     const res = await fetch("http://localhost:4000/api/chat", {
+     const res = await fetch("http://3.110.191.16:8888/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMessage }),
@@ -124,7 +127,7 @@ const Page = ({params}) => {
                 : msg
             )
         );
-     {notificationSound && (
+      {notificationSound && (
         playSound('/Sounds/pop2.wav')
       )}
     }
@@ -213,7 +216,7 @@ const Page = ({params}) => {
         <div className="justify-items w-full h-25 rounded px-5 shadow-53 flex items-center justify-between">
           <div className="flex-items">
             <Image src="/Header/Profile.png" alt="Profile icon" width={30} height={30} />
-            <h1 className="font-bold text-black">{matchedAgents.name}</h1>
+            <h1 className="font-bold text-black">{matchedWorkAgent.opportunityName}</h1>
           </div>
           <div className="flex-items-2 gap-1">
             {/* <Image src="/reboot.png" alt="reboot icon" width={20} height={20} /> */}
@@ -264,7 +267,9 @@ const Page = ({params}) => {
                 <span className={`text-sm ${msg.text=== "Thinking..." && 'shine-Text'}`}>{msg.text}</span>
 
                 <div id={`timestamp-${i}`} className={`text-[10px] text-gray-700 opacity-70 ${msg.sender === "user" ? "text-left": "text-right"}`}>
+                  <ReactMarkdown>
                   {msg.text !== "Thinking..." && formatMessageTime(msg.timeStamp)}
+                  </ReactMarkdown>
                 </div>
 
                 { msg.sender === "bot" && msg.text !== "Thinking..." && <div className="absolute w-24 bg-white shadow-11 flex-items-2 gap-1 px-2 py-1 rounded-2xl -bottom-4 left-5">

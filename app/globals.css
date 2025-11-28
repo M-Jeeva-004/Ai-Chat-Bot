@@ -781,3 +781,40 @@ animation: pulse 2s infinite;
 }
 
 
+/* 404 PAGE CSS */
+.page_404{ padding:40px 0; background:#fff; font-family: 'Arvo', serif;
+}
+
+.four_zero_four_bg{
+  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  height: 400px;
+  background-position: center;
+ }
+
+
+ /* CHAT BOT RESPONSE */
+ .chat-message {
+  padding: 1rem;
+  line-height: 1.6;
+  font-size: 15px;
+  color: #222;
+}
+
+.unordered,
+.ordered {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.list-item {
+  margin-bottom: 0.35rem;
+}
+
+.chat-message p {
+  margin: 0.75rem 0;
+}
+
+.chat-message strong {
+  font-weight: 600;
+}
+

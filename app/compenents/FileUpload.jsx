@@ -17,11 +17,6 @@ const ALLOWED_TYPES = [
 const FileUpload = ({ files, setFiles, uploadedFiles }) => {
   const [searchFiles, setSearchFiles] = useState("");
   const [filesByUpdation, setFilesByUpdation] = useState("modified_new");
-  // const {
-  //   files,
-  //   setFiles,
-  //   uploadedFiles,
-  // } = useSources(); 
 
   const validateFiles = (fileList) => {
     const validFiles = [];

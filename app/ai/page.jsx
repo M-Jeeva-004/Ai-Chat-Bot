@@ -1,26 +1,27 @@
 'use client'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { aiAgents } from "../data/playground";
 import { Plus, UserRoundCheck, ScanSearch, Bot, Pencil, MessageSquareMore, Copy } from "lucide-react";
 
-// const aiAgents = [
-//   { agenIid: "spark001", name: "Agent Spark" },
-//   { agentId: "spark002", name: "Sales Agent" }
-// ];
-
 const page = () => {
-  // const id = params;
   const [agents, setAgents] = useState(aiAgents);
   const [openCreateAgent, setOpenCreateAgent] = useState(false);
   const [animateOut, setAnimateOut] = useState(false);
   const [agentName, setAgentName] = useState('');
   const [searchAgent, setSearchAgent] = useState("");
-
-  // const matchedAgents = aiAgents.find((agent) => agent.agentId === id); 
+  const [showError, setShowError] = useState(false);
 
   const handleCreateAgent = () => {
+    if (agentName === "") {
+      setShowError(true);
+      setTimeout(()=> {
+        setShowError(false)
+      }, 3000)
+      return
+    }
+
     const newAgent = {
       agentId: crypto.randomUUID(),
       name: agentName,
@@ -47,6 +48,7 @@ const page = () => {
             onChange={(e) => setAgentName(e.target.value)} 
             placeholder="Enter Agent name" 
             className='form-input border-l-2! border-l-green-500! text-gray-500' />
+            {showError && <p className="text-red-500 text-sm pt-1">Enter the above field</p>}
 
             <div className="flex flex-col w-[50%] mt-8 p-5 border border-green-500 bg-green-100 rounded cursor-pointer">
               <Image 

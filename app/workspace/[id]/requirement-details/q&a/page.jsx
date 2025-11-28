@@ -3,7 +3,7 @@ import React from 'react';
 import SourceRight from '@/app/compenents/SourceRight';
 import { useState } from 'react';
 import Image from 'next/image';
-import { useSources } from "@/app/context/SourcesContext";
+import { useRequirement } from '@/app/context/WorkspaceContext';
 
 const QA = () => {
 
@@ -15,7 +15,7 @@ const QA = () => {
   const {
     qaSnippets,
     setQaSnippets,
-  } = useSources();
+  } = useRequirement();
 
   const [questions, setQuestions] = useState(['']);
 

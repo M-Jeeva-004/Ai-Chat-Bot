@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation';
 import Spark from '../compenents/Spark';
 
-export default function ClientLayoutWrapper({ children }: { children: React.ReactNode }) {
+export default function ClientLayoutWrapper({ children }) {
   const pathname = usePathname();
 
   const showSpark = pathname !== '/ai';

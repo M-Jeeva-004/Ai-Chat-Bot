@@ -8,6 +8,8 @@ const Leftbar = ({label, icon, greenIcon, href}) => {
 
     const pathname = usePathname();
     const isActive = pathname === href;
+    console.log(pathname, "pathname")
+    console.log(href, "Href")
 
   return (
     <> 
